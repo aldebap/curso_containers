@@ -1,5 +1,7 @@
 # Curso Containers Completo & Total
 
+[![Docker Publish](https://github.com/aldebap/curso_containers/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/aldebap/curso_containers/actions/workflows/docker-publish.yml)
+
 Material de apoio para o Curso Containers Completo & Total da [CodeOptera](https://www.youtube.com/@CodeOptera)
 
 ### hello-world
