@@ -13,7 +13,7 @@ env:
   HOME_PATH: ${{ github.workspace }}
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  IMAGE_NAME: hello-world
+  IMAGE_NAME: helloworld
 
 jobs:
   build:
