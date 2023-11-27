@@ -15,6 +15,18 @@ Para criar um container a partir dessa aplicação, utilizar o seguinte comando:
 docker build --tag hello-world --file Dockerfile .
 ```
 
+Para criar um container a partir dessa aplicação e publicá-lo como um pacote no GitHub, utilizar o
+seguinte comando:
+
+```sh
+docker build --tag ghcr.io/aldebap/hello-world --file Dockerfile .
+
+export PAT='${GitHubs Personal Access Token}'
+echo $PAT | docker login ghcr.io -u aldebap --password-stdin
+docker push ghcr.io/aldebap/hello-world
+
+```
+
 Para executar essa aplicação a partig a sua imagem, utilizar o seguinte comando:
 
 ```sh
