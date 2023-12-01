@@ -15,18 +15,6 @@ Para criar um container a partir dessa aplicação, utilizar o seguinte comando:
 docker build --tag hello-world --file Dockerfile .
 ```
 
-Para criar um container a partir dessa aplicação e publicá-lo como um pacote no GitHub, utilizar o
-seguinte comando:
-
-```sh
-docker build --tag ghcr.io/aldebap/hello-world --file Dockerfile .
-
-export PAT='${GitHubs Personal Access Token}'
-echo $PAT | docker login ghcr.io -u aldebap --password-stdin
-docker push ghcr.io/aldebap/hello-world
-
-```
-
 Para executar essa aplicação a partig a sua imagem, utilizar o seguinte comando:
 
 ```sh
@@ -38,26 +26,26 @@ docker run hello-world
 Essa pasta contém um aplicação web que utiliza o NginX, que é um servidor web, para publicar uma
 única página HTML estática.
 
-Para criar um container a partir dessa aplicação, utilizar o seguinte comando:
-
-```sh
-docker build --tag hello-web --file Dockerfile .
-```
-
 Para criar um container a partir dessa aplicação e publicá-lo como um pacote no GitHub, utilizar o
 seguinte comando:
 
 ```sh
-docker build --tag ghcr.io/aldebap/hello-web --file Dockerfile .
+export  GITHUB_USER='aldebap'
+
+docker build --tag ghcr.io/${GITHUB_USER}/hello-web --file Dockerfile .
 
 export PAT='${GitHubs Personal Access Token}'
-echo $PAT | docker login ghcr.io -u aldebap --password-stdin
-docker push ghcr.io/aldebap/hello-web
+echo ${PAT} | docker login ghcr.io -u ${GITHUB_USER} --password-stdin
+docker push ghcr.io/${GITHUB_USER}/hello-web
 
 ```
 
-Para executar essa aplicação a partig a sua imagem, utilizar o seguinte comando:
+Se quiser utilizar o seu usuário de Github, deve-se substituir o valor da variável
+```$GITHUB_USER``` no script acima, bem como criar um token PAT para o seu usuário,
+utilizando esse token na variável ```$PAT```
+
+Para executar essa aplicação a partir da sua imagem, utilizar o seguinte comando:
 
 ```sh
-docker run -d -p 8080:80 hello-web
+docker run -d -p 8080:80 ghcr.io/${GITHUB_USER}/hello-web
 ```
