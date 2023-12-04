@@ -49,3 +49,7 @@ Para executar essa aplicação a partir da sua imagem, utilizar o seguinte coman
 ```sh
 docker run -d -p 8080:80 ghcr.io/${GITHUB_USER}/hello-web
 ```
+
+### rest-api
+
+Essa pasta contém uma implementação de um endpoint rest escrita em Golang.
