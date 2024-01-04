@@ -1,16 +1,20 @@
 # syntax=docker/dockerfile:1
 
 #	build the application
-FROM golang:1.17-alpine AS build
+FROM microsoft/nanoserver AS build
 
 WORKDIR /rest-api
 
-COPY main.go go.mod go.sum ./
+COPY main.py service.py ./
 
+RUN CGO_ENABLED=0 pip3 install Flask
 RUN CGO_ENABLED=0 go build -o ./bin/server main.go
 
 #	create application image
-FROM alpine:latest
+FROM microsoft/nanoserver
+
+#   properties
+LABEL org.opencontainers.image.source https://github.com/aldebap/rest-api-python
 
 WORKDIR /rest-api
 
