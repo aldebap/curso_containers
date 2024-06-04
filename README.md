@@ -21,6 +21,31 @@ Para executar essa aplicação a partig a sua imagem, utilizar o seguinte comand
 docker run hello-world
 ```
 
+### windows
+
+Essa pasta contém uma versão Windows da mesma aplicação Hello World que utiliza um Shell script
+(PowerShell) para imprimir a famosa mensagem "__Hello World__" na console.
+
+Para criar uma máquina virtual com Windows na GCP utilizar o seguinte comando:
+
+```sh
+cmd/createWindowsVM.sh
+```
+
+Para instalar o gerenciador de pacotes Chocolatey que permite instalar o Docker a partir de um
+script PowerShell na VM da GCP utilizar os seguintes comandos:
+
+```sh
+cmd/install_chocolatey.ps1
+cmd/install_docker.ps1
+```
+
+Para criar um container a partir dessa aplicação, utilizar o seguinte comando:
+
+```sh
+docker build --tag hello-win-world --file Dockerfile .
+```
+
 ### web-server
 
 Essa pasta contém um aplicação web que utiliza o NginX, que é um servidor web, para publicar uma
